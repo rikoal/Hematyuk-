@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HematYUK!</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">Hemat<span>YUK!</span></div>
+    <div class="hello" id="hello"></div>
+  </header>
+  <main id="view"></main>
+</div>
+
+<nav class="nav" aria-label="Menu utama">
+  <button class="tab" data-tab="beranda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Beranda</button>
+  <button class="tab" data-tab="transaksi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Transaksi</button>
+  <button class="fab" data-action="open-add" aria-label="Catat transaksi">+</button>
+  <button class="tab" data-tab="laporan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>Laporan</button>
+  <button class="tab" data-tab="akun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Akun</button>
+</nav>
+
+<div class="overlay" id="sheet-add" hidden>
+  <form class="sheet" id="form-add" autocomplete="off">
+    <div class="sheet-head"><h2>Catat transaksi</h2><button type="button" class="btn ghost small" data-action="close">Tutup</button></div>
+    <div class="field">
+      <div class="seg" role="radiogroup" aria-label="Jenis transaksi">
+        <label><input type="radio" name="f-type" value="out" checked><span>Pengeluaran</span></label>
+        <label><input type="radio" name="f-type" value="in"><span>Pemasukan</span></label>
+      </div>
+    </div>
+    <div class="field"><label for="f-amount">Jumlah (Rp)</label><input type="text" id="f-amount" class="money" inputmode="numeric" placeholder="0"></div>
+    <div class="field" id="cat-field"><label>Kategori</label><div class="chips" id="f-cats"></div></div>
+    <div class="field"><label for="f-note">Catatan (opsional)</label><input type="text" id="f-note" maxlength="60" placeholder="Contoh: makan siang"></div>
+    <div class="field"><label for="f-date">Tanggal</label><input type="date" id="f-date"></div>
+    <div class="alert bad" id="add-err" hidden style="margin:0 0 12px"></div>
+    <button class="btn" type="submit" style="width:100%">Simpan</button>
+  </form>
+</div>
+
+<div class="overlay" id="sheet-save" hidden>
+  <form class="sheet" id="form-save" autocomplete="off">
+    <div class="sheet-head"><h2 id="save-title">Setor ke target</h2><button type="button" class="btn ghost small" data-action="close">Tutup</button></div>
+    <div class="field"><label for="s-amount">Jumlah setoran (Rp)</label><input type="text" id="s-amount" class="money" inputmode="numeric" placeholder="0"></div>
+    <div class="hint" id="save-hint" style="margin:-4px 0 12px"></div>
+    <div class="alert bad" id="save-err" hidden style="margin:0 0 12px"></div>
+    <button class="btn" type="submit" style="width:100%">Setor</button>
+  </form>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
